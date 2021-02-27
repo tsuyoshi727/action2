@@ -14,9 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: wangxh86/JavaScript
+        uses: actions/checkout@v2
         with:
-          repository: adw2s/Action              
+          repository: wangxh86/JavaScript              
 
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
