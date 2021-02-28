@@ -15,8 +15,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          repository: Sunert/Scripts              
 
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
@@ -27,7 +25,7 @@ jobs:
           npm install
       - name: '运行 【1】'
         run: |
-          node Task/baidu_speed.js
+          node Node/baidu_speed.js
         env:
           BAIDU_CASH: ${{ secrets.BAIDU_CASH }}
           BAIDU_COOKIE: ${{ secrets.BAIDU_COOKIE }}
