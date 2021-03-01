@@ -16,7 +16,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          repository: pizile/BBB              
+          repository: yigeacha/ziye              
 
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
@@ -27,7 +27,7 @@ jobs:
           npm install
       - name: '运行 【1】'
         run: |
-          node Task/zhima.js
+          node zhima.js
         env:
           ZM_zhimatxbody: ${{ secrets.ZM_zhimatxbody }}
           ZM_CASH: ${{ secrets.ZM_CASH }}
