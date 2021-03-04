@@ -13,11 +13,10 @@ jobs:
     env:
         BBB_bububaoTOKEN: ${{ secrets.BBB_bububaoTOKEN }}
         BBB_CASH: ${{ secrets.BBB_CASH }}
-       	        
     steps:
       - name: Checkout
         run: |
-          git clone https://github.com/GitHubid-sjTEST/JavaScript.git ~/JavaScript
+          git clone https://github.com/LiuYuanwork/AC-Task.git ~/AC-Task
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
@@ -25,12 +24,12 @@ jobs:
       - name: npm install
         if: env.BBB_bububaoTOKEN
         run: |
-          cd ~/JavaScript
+          cd ~/AC-Task
           npm install
       - name: '运行 【步步宝】'
         if: env.BBB_bububaoTOKEN
         run: |
-          cd ~/JavaScript
+          cd ~/AC-Task
           node Task/bububao.js
         env:
           
@@ -41,3 +40,5 @@ jobs:
           BARK_SOUND: ${{ secrets.BARK_SOUND }}
           DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
           DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
+
+    
