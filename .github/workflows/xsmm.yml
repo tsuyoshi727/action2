@@ -1,6 +1,5 @@
 name: 猫
-
-  on:
+on:
       workflow_dispatch:
       schedule:
         - cron: "*/30 * * * *"
