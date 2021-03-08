@@ -1,0 +1,35 @@
+name: pyq
+
+on:
+    workflow_dispatch:
+    schedule:
+      - cron: "0 */1 * * *"
+    watch:
+      types: [started]
+    repository_dispatch:
+      types: pyq
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          repository: xingren2020/github_ZhiYi-N_Private-Script              
+
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: npm install
+        run: |
+          npm install
+      - name: '运行 【1】'
+        run: |
+          node Scripts/pyq.js
+        env:
+          PYQAD: ${{ secrets.PYQAD }}
+          PYQUA: ${{ secrets.PYQUA }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
