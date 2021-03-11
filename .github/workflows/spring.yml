@@ -1,0 +1,37 @@
+name: 春风转
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/30 0-15 * * *'
+  repository_dispatch:
+      types: spring
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+    env:
+        CFZURL: ${{ secrets.CFZURL }}
+        CFZHD: ${{ secrets.CFZHD }}  
+        TZ: Asia/shanghai
+    steps:
+      - name: Checkout
+        run: |
+          git clone https://github.com/chennfen/JavaScripts.git ~/JavaScripts
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+      - name: npm install
+        run: |
+          cd ~/JavaScripts
+          npm install
+          npm install cron
+          npm install request
+      - name: '运行 【1】'
+        run: |
+          cd ~/JavaScripts   
+          node Task/cfz.js
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
