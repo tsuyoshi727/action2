@@ -9,6 +9,8 @@ on:
      - cron: '*/30 2-14 * * *'
   watch:
     types: started
+  repository_dispatch:
+      types: ysm
 #env:
   #TZ: Asia/Shanghai
 
