@@ -34,10 +34,6 @@ jobs:
         if: env.FQKK_HD
         run: |
           node Task/fqkk.js
-      - name: '运行 【云扫码】'
-        if: env.YSM_HD
-        run: |
-          node Task/ysm.js
         env:
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
