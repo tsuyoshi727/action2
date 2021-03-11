@@ -1,0 +1,36 @@
+name: 哈啰短视频
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/30 * * * *'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+    env:
+        XYZD_URL: ${{ secrets.XYZD_URL }}
+        XYZD_HD: ${{ secrets.XYZD_HD }}     
+        XYZD_BD: ${{ secrets.XYZD_BD }}  
+        TZ: Asia/shanghai
+    steps:
+      - name: Checkout
+        run: |
+          git clone https://github.com/lh44575858/....git ~/...
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+      - name: npm install
+        run: |
+          cd ~/...
+          npm install
+          npm install cron
+          npm install request
+      - name: '运行 【1】'
+        run: |
+          cd ~/...   
+          node Task/hldsp.js
+      env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
