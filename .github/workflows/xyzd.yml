@@ -1,4 +1,4 @@
-name: 哈啰短视频
+name: 幸运赚点
 
 on:
   workflow_dispatch:
@@ -30,7 +30,7 @@ jobs:
       - name: '运行 【1】'
         run: |
           cd ~/...   
-          node Task/hldsp.js
+          node Task/xyzd.js
       env:
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
