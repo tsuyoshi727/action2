@@ -3,7 +3,7 @@ name: 中青
 on:
   workflow_dispatch:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '*/15 * * * *'
   repository_dispatch:
       types: youth
 jobs:
