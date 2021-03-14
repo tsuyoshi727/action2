@@ -1,0 +1,38 @@
+name: 中青
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '5 0-15 * * *'
+  repository_dispatch:
+      types: youth
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+    env:
+        YOUTH_HEADER: ${{ secrets.YOUTH_HEADER }}
+        YOUTH_ARTBODY: ${{ secrets.YOUTH_ARTBODY }}
+        YOUTH_TIME: ${{ secrets.YOUTH_TIME }}
+        YOUTH_NOTIFY_CONTROL: ${{ secrets.YOUTH_NOTIFY_CONTROL }}
+    steps:
+      - name: Checkout
+        run: |
+          git clone https://github.com/LxgLxgLxg/ScriptCopy_sunert.git ~/ScriptCopy_sunert
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+      - name: npm install
+        run: |
+          cd ~/ScriptCopy_sunert
+          npm install
+          npm install cron
+          npm install request
+      - name: '运行 【1】'
+        run: |
+          cd ~/ScriptCopy_sunert
+          node Task/youth.js
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
