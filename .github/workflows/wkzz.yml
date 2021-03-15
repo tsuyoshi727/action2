@@ -1,0 +1,33 @@
+name: 微客
+on:
+      workflow_dispatch:
+      schedule:
+        - cron: "*/30 0-15 * * *"
+      watch:
+        types: [started]
+      repository_dispatch:
+        types: wkzz
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          repository: allenqq1209/allen              
+
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: npm install
+        run: |
+          npm install
+      - name: '运行 【1】'
+        run: |
+          node task/wkzz.js
+        env:
+          WKZZ_HD: ${{ secrets.WKZZ_HD }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
