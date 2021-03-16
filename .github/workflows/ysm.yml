@@ -17,11 +17,11 @@ on:
 jobs:
   build:
     env:
-      YSMURL: ${{ secrets.YSMURL }}
-      YSMHD: ${{ secrets.YSMHD }}
-      YSMBODY: ${{ secrets.YSMBODY }}
-      YSM2BODY: ${{ secrets.YSM2BODY }}
-      YSMTX: ${{ secrets.YSMTX }}
+      YSM_URL: ${{ secrets.YSMURL }}
+      YSM_HD: ${{ secrets.YSMHD }}
+      YSM_BD: ${{ secrets.YSMBODY }}
+      YSM2_BD: ${{ secrets.YSM2BODY }}
+      YSM_TX: ${{ secrets.YSMTX }}
       PUSH_KEY: ${{ secrets.PUSH_KEY }}
       BARK_PUSH: ${{ secrets.BARK_PUSH }}
       TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
@@ -36,25 +36,18 @@ jobs:
     steps:
       - name: Checkout
         run: |
-          git clone https://github.com/jake3737/1111.git ~/Scripts
+          git clone https://github.com/XQ0120/PlayerActions.git ~/PlayerActions
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
       - name: npm install
         run: |
-          cd ~/Scripts
+          cd ~/PlayerActions
           npm install -g npm
           npm update
 
-      - name: '运行 【16ysm(云扫码)】'
-        if: env.YSMURL
+      - name: '运行 【云扫码】'
         run: |
-          cd ~/Scripts
-          node Task/ysm.js
-        env:
-          YSMURL: ${{ secrets.YSMURL }}
-          YSMHD: ${{ secrets.YSMHD }}
-          YSMBODY: ${{ secrets.YSMBODY }}
-          YSM2BODY: ${{ secrets.YSM2BODY }}
-          YSMTX: ${{ secrets.YSMTX }}
+          cd ~/PlayerActions
+          node workflow/CloudScanCode.js
