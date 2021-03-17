@@ -3,8 +3,10 @@ name: 番茄看看
 
 on:
   workflow_dispatch:
-  schedule:
-     - cron: '2 0,4,8,12 * * *'
+  #schedule:
+     #- cron: '2 0,4,8,12 * * *'
+  repository_dispatch:
+      types: ysm
   watch:
     types: started
 jobs:
@@ -14,10 +16,6 @@ jobs:
     env:
         FQKK_URL: ${{ secrets.FQKK_URL }}
         FQKK_HD: ${{ secrets.FQKK_HD }}       
-        YSM_URL: ${{ secrets.YSM_URL }}
-        YSM_HD: ${{ secrets.YSM_HD }}    
-        YSM_BD: ${{ secrets.YSM_BD }} 
-        YSM2_BD: ${{ secrets.YSM2_BD }} 
         TZ: Asia/shanghai
     steps:
       - name: Checkout
