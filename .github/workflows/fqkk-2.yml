@@ -6,7 +6,7 @@ on:
   #schedule:
      #- cron: '2 0,4,8,12 * * *'
   repository_dispatch:
-      types: ac-30m
+      types: 30m
   watch:
     types: started
 jobs:
