@@ -10,7 +10,7 @@ on:
   watch:
     types: started
   repository_dispatch:
-      types: ysm
+      types: ac-30m
 #env:
   #TZ: Asia/Shanghai
 
