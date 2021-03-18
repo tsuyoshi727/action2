@@ -6,7 +6,7 @@ on:
       watch:
         types: [started]
       repository_dispatch:
-        types: ac-10m
+        types: 10m
 
 jobs:
   build:
