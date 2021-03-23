@@ -28,5 +28,6 @@ jobs:
           node Task/jkd.js
         env:
           JKD_COOKIE: ${{ secrets.JKD_COOKIE }}
+          JKD_WITHDRAW: ${{ secrets.JKD_WITHDRAW }}
           DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
           DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
