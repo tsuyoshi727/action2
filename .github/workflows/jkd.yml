@@ -25,9 +25,9 @@ jobs:
           npm install
       - name: '运行 【聚看点】'
         run: |
-          node Task/jkd.js
+          node Node/jkd.js
         env:
-          JKD_COOKIE: ${{ secrets.JKD_COOKIE }}
-          JKD_WITHDRAW: ${{ secrets.JKD_WITHDRAW }}
+          #JKD_COOKIE: ${{ secrets.JKD_COOKIE }}
+          #JKD_WITHDRAW: ${{ secrets.JKD_WITHDRAW }}
           DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
           DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}

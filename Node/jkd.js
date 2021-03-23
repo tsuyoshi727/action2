@@ -31,10 +31,7 @@ const DATE = `${new Date().getUTCFullYear()}${(new Date().getUTCMonth() + 1).toS
 let liveBody = null, fakeIOS = true
 const $ = new Env("聚看点")
 let sum = 0
-let cookiesArr = [
-  // '', // xz_jkd_appkey=xxx; JSESSIONID=xxx; UM_distinctid=xxx; （账号1ck）
-  // '', // xz_jkd_appkey=xxx; JSESSIONID=xxx; UM_distinctid=xxx; （账号2ck）
-], cookie = '', message;
+let cookiesArr = ["JSESSIONID=CAF1B1FA6A2CF52C41B5C43FECFD9E62; xz_jkd_appkey=e1e0b94c02224d47a03378e6b5047cdf!iOS!5.6.5"], cookie = '', message;
 let notify = !$.isNode() ? $.getdata("JKD_MSG") : !!process.env.JKD_NOTIFY
 const ntf = $.isNode() ? require('./sendNotify') : '';
 
