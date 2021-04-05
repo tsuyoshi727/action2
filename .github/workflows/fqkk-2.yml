@@ -3,10 +3,10 @@ name: 番茄看看
 
 on:
   workflow_dispatch:
-  #schedule:
-     #- cron: '2 0,4,8,12 * * *'
+  schedule:
+     - cron: '0 0-8 * * *'
   repository_dispatch:
-      types: 30m
+      types: fqkk
   watch:
     types: started
 jobs:

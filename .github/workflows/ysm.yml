@@ -5,12 +5,12 @@ name: 云扫码
 
 on:
   workflow_dispatch:
-  #schedule:
-     #- cron: '*/30 2-14 * * *'
+  schedule:
+     - cron: '*/30 9-15 * * *'
   watch:
     types: started
   repository_dispatch:
-      types: 30m
+      types: ysm
 #env:
   #TZ: Asia/Shanghai
 
