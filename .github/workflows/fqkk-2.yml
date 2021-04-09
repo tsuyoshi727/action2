@@ -4,7 +4,7 @@ name: 番茄看看
 on:
   workflow_dispatch:
   schedule:
-     - cron: '0 7-15 * * *'
+     - cron: '0 6-15 * * *'
   repository_dispatch:
       types: fqkk
   watch:
