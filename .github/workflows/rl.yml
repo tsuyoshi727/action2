@@ -17,9 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          repository: ma32019/jjdd              
+        uses: actions/checkout@v2            
 
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
@@ -30,7 +28,7 @@ jobs:
           npm install
       - name: '运行 【rl】'
         run: |
-          node ranlv.js
+          node Task/ranlv.js
         env:
           RLURL: ${{ secrets.RLURL }}
           RLHEADER: ${{ secrets.RLHEADER }}
