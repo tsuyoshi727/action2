@@ -28,7 +28,7 @@ jobs:
           npm install
       - name: '运行 【文创阅读】'
         run: |
-          node Node/test.js
+          node Task/test.js
         env:
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
