@@ -6,7 +6,7 @@ name: 云扫码
 on:
   workflow_dispatch:
   schedule:
-     - cron: '*/30 0-5,22,23 * * *'
+     - cron: '*/30 10-15,22,23 * * *'
   watch:
     types: started
   repository_dispatch:
