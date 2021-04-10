@@ -3,8 +3,8 @@ name: 文创阅读
 
 on:
   workflow_dispatch:
-  schedule:
-     - cron: '16 1-13 * * *'
+  #schedule:
+     #- cron: '16 1-13 * * *'
   watch:
     types: started
 jobs:
