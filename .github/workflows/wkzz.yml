@@ -2,7 +2,7 @@ name: 微客
 on:
       workflow_dispatch:
       schedule:
-        - cron: "0 */1 * * *"
+        - cron: "20 */1 * * *"
       watch:
         types: [started]
       repository_dispatch:

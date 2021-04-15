@@ -2,8 +2,8 @@ name: 春风转
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '*/30 0-15 * * *'
+  #schedule:
+    #- cron: '*/30 0-15 * * *'
   repository_dispatch:
       types: spring
 jobs:
