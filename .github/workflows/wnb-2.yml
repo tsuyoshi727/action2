@@ -5,8 +5,8 @@ name: wnb2
 
 on:
     workflow_dispatch:
-    schedule:
-      - cron: "3,33 0-15 * * *"
+    #schedule:
+      #- cron: "3,33 0-15 * * *"
     watch:
       types: [started]
     repository_dispatch:
