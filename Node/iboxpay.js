@@ -1,8 +1,8 @@
 /* ziye 
-github地址 https://github.com/6Svip120apk69
+github地址 https://github.com/ziye888
 TG频道地址  https://t.me/ziyescript
 TG交流群   https://t.me/joinchat/AAAAAE7XHm-q1-7Np-tF3g
-boxjs链接  https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThxc1RBVUE/main/Task/ziye.boxjs.json
+boxjs链接  https://cdn.jsdelivr.net/gh/ziye888/JavaScript@main/Task/ziye.boxjs.json
 转载请备注个名字，谢谢
 
 ⚠️笑谱
@@ -47,16 +47,17 @@ boxjs链接  https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThx
 3.17 修复视频功能， 暂时设置ck上限为10
 3.18 修复视频错误，修复小错误，新增COOKIE方式一 boxjs复制会话
 3.19 修复ac运行报错
-
+3.20 视频ck有效期目前未知，增加失效判定，直播上限为5000，已适配
+4.15 视频ck有效期预计15天，直播上限为3000，已适配
 
 
 ⚠️一共1个位置 3个ck  👉 7条 Secrets 
 多账号换行
 
 
-⚠️方法一
+⚠️方法一（永不掉ck）
 
-第一步 进入笑谱 选择手机号登陆，输入手机号，点击获取验证码
+第一步 进入笑谱 选择手机号登陆，输入手机号，点击获取验证码（⚠️不要登录，如果想登录，请重新获取验证码或者用微信登录）
 
 第二步 ⚠️进入boxjs（其他平台则输入对应环境变量）  输入当前账号序号   输入手机号  和  验证码
 
@@ -107,27 +108,27 @@ hostname=veishop.iboxpay.com
 ############## 圈x
 
 #笑谱获取更新TOKEN
-https:\/\/veishop\.iboxpay\.com\/nf_gateway\/nf-user-auth-web\/ignore_tk\/veishop\/v1\/* url script-response-body https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThxc1RBVUE/main/Task/iboxpay.js
+https:\/\/veishop\.iboxpay\.com\/nf_gateway\/nf-user-auth-web\/ignore_tk\/veishop\/v1\/* url script-response-body https://cdn.jsdelivr.net/gh/ziye888/JavaScript@main/Task/iboxpay.js
 
 #笑谱获取视频ck
-https:\/\/veishop\.iboxpay\.com\/nf_gateway\/nf_customer_activity\/day_cash\/v1\/give_gold_coin_by_video.json url script-request-body https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThxc1RBVUE/main/Task/iboxpay.js
+https:\/\/veishop\.iboxpay\.com\/nf_gateway\/nf_customer_activity\/day_cash\/v1\/give_gold_coin_by_video.json url script-request-body https://cdn.jsdelivr.net/gh/ziye888/JavaScript@main/Task/iboxpay.js
 
 ############## loon
-http-response https:\/\/veishop\.iboxpay\.com\/nf_gateway\/nf-user-auth-web\/ignore_tk\/veishop\/v1\/* script-path=https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThxc1RBVUE/main/Task/iboxpay.js, requires-body=1,max-size=0, tag=笑普token
+http-response https:\/\/veishop\.iboxpay\.com\/nf_gateway\/nf-user-auth-web\/ignore_tk\/veishop\/v1\/* script-path=https://cdn.jsdelivr.net/gh/ziye888/JavaScript@main/Task/iboxpay.js, requires-body=1,max-size=0, tag=笑普token
 
-http-requires https:\/\/veishop\.iboxpay\.com\/nf_gateway\/nf_customer_activity\/day_cash\/v1\/give_gold_coin_by_video.json script-path=https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThxc1RBVUE/main/Task/iboxpay.js, requires-body=1,max-size=0, tag=笑谱获取视频ck
+http-requires https:\/\/veishop\.iboxpay\.com\/nf_gateway\/nf_customer_activity\/day_cash\/v1\/give_gold_coin_by_video.json script-path=https://cdn.jsdelivr.net/gh/ziye888/JavaScript@main/Task/iboxpay.js, requires-body=1,max-size=0, tag=笑谱获取视频ck
 ############## surge
 
 #笑谱获取更新TOKEN
-笑谱获取更新TOKEN = type=http-response,pattern=https:\/\/veishop\.iboxpay\.com\/nf_gateway\/nf-user-auth-web\/ignore_tk\/veishop\/v1\/*,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThxc1RBVUE/main/Task/iboxpay.js
+笑谱获取更新TOKEN = type=http-response,pattern=https:\/\/veishop\.iboxpay\.com\/nf_gateway\/nf-user-auth-web\/ignore_tk\/veishop\/v1\/*,requires-body=1,max-size=0,script-path=https://cdn.jsdelivr.net/gh/ziye888/JavaScript@main/Task/iboxpay.js
 
 #笑谱获取视频ck
-笑谱获取视频ck = type=http-requires,pattern=https:\/\/veishop\.iboxpay\.com\/nf_gateway\/nf_customer_activity\/day_cash\/v1\/give_gold_coin_by_video.json,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThxc1RBVUE/main/Task/iboxpay.js
+笑谱获取视频ck = type=http-requires,pattern=https:\/\/veishop\.iboxpay\.com\/nf_gateway\/nf_customer_activity\/day_cash\/v1\/give_gold_coin_by_video.json,requires-body=1,max-size=0,script-path=https://cdn.jsdelivr.net/gh/ziye888/JavaScript@main/Task/iboxpay.js
 
 
 
 */
-GXRZ = '3.19 修复ac运行报错'
+GXRZ = '4.15 视频ck有效期预计15天，直播上限为3000，已适配'
 const $ = Env("笑谱");
 $.idx = ($.idx = ($.getval('iboxpaySuffix') || '1') - 1) > 0 ? ($.idx + 1 + '') : ''; // 账号扩展字符
 const notify = $.isNode() ? require("./sendNotify") : ``;
@@ -613,7 +614,7 @@ async function all() {
             }
         }
 
-        if (LIVE >= 1 && nowTimes.getHours() >= 8 && nowTimes.getHours() <= 23 && $.sylist.resultCode && livecs < 20) {
+        if (LIVE >= 1 && nowTimes.getHours() >= 8 && nowTimes.getHours() <= 23 && $.sylist.resultCode && livecs < 6) {
             await liveslist(); //直播节目表
             if (liveIdcd >= 1) {
                 dd = liveIdcd * 35 - 34
@@ -890,10 +891,8 @@ function hdid(timeout = 0) {
                     if ($.hdid.resultCode == 1) {
                         spid = $.hdid.data.everyDayActivityList.find(item => item.actTypeId === 9)
                         zbid = $.hdid.data.everyDayActivityList.find(item => item.actTypeId === 10)
-                        //console.log(spid.actName + 'ID：' + spid.actId + '\n' +
-                        //zbid.actName + 'ID：' + zbid.actId + '\n');
-                        //$.message += '【' + spid.actName + 'ID】：' + spid.actId + '\n' +
-                        //'【' + zbid.actName + 'ID】：' + zbid.actId + '\n';
+                        console.log(spid.actName + 'ID：' + spid.actId + '\n');
+                        $.message += '【' + spid.actName + 'ID】：' + spid.actId + '\n';
                     }
 
                 } catch (e) {
@@ -953,11 +952,11 @@ function videoo(timeout = 0) {
             videoHEADER1 = videoHEADER[0].replace(`${token}`, `${TOKEN}`)
 
             SPID = videoBODY[0].split(`"actId":"`)[1].split(`"}`)[0]
-            videoBODY1 = videoBODY[0].replace(`${SPID}`, `${spid.actId}`)
+           
             let url = {
                 url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/v1/give_gold_coin_by_video.json`,
                 headers: JSON.parse(videoHEADER1),
-                body: videoBODY1,
+                body: videoBODY[0],
             }
             $.post(url, async (err, resp, data) => {
                 try {
@@ -965,14 +964,18 @@ function videoo(timeout = 0) {
                     $.videoo = JSON.parse(data);
                     if ($.videoo.resultCode == 0) {
                         LIVES = 2
+                        if (SPID != spid.actId) {
 
-                        if ($.videoo.errorCode == "GATEWAY-ERROR-002") {
+                            console.log('视频奖励：⚠️视频CK已过期，请重新获取\n');
+                            $.message += '【视频奖励】：⚠️视频CK已过期，请重新获取\n'
+
+                        }else if ($.videoo.errorCode == "GATEWAY-ERROR-002") {
                             console.log('视频奖励：⚠️进入冷却中......\n');
                             $.message += '【视频奖励】：⚠️进入冷却中......\n'
-                        }else if ($.videoo.errorCode == "GATEWAY-ERROR-003") {
+                        } else if ($.videoo.errorCode == "GATEWAY-ERROR-003") {
                             console.log('视频奖励：⚠️TOKEN失效\n');
                             $.message += '【视频奖励】：⚠️TOKEN失效\n'
-                        } else{
+                        } else {
                             console.log(`视频奖励：⚠️${$.videoo.errorCode}\n`);
                             $.message += `【视频奖励】：⚠️${$.videoo.errorCode}\n`
                         }
@@ -1009,14 +1012,11 @@ function video(timeout = 0) {
                 setTimeout(() => {
                     token = videoHEADER[i].split(`"token":"`)[1].split(`",`)[0]
                     videoHEADER2 = videoHEADER[i].replace(`${token}`, `${TOKEN}`)
-                    SPID = videoBODY[i].split(`"actId":"`)[1].split(`"}`)[0]
-                    videoBODY2 = videoBODY[i].replace(`${SPID}`, `${spid.actId}`)
-
-
+                    //SPID = videoBODY[i].split(`"actId":"`)[1].split(`"}`)[0]
                     let url = {
                         url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/v1/give_gold_coin_by_video.json`,
                         headers: JSON.parse(videoHEADER2),
-                        body: videoBODY2,
+                        body: videoBODY[i],
                     }
                     $.post(url, async (err, resp, data) => {
                         try {
