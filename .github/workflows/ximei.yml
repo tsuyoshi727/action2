@@ -16,7 +16,7 @@ jobs:
         XIMEI_URL: ${{ secrets.XIMEI_URL }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
         with:
           repository: Maomaoyu0319/Fuck-Fork
       - name: Use Node.js 14.x
