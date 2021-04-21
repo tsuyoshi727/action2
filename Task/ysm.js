@@ -1,118 +1,5 @@
-/*
-软件名称:云扫码 微信扫描二维码打开
-更新时间：2021-04-16 @肥皂
-脚本说明：云扫码自动阅读
-脚本为自动完成云扫码的阅读任务
-每日收益1.5元左右，可多号撸。提现秒到
-可以多个阅读平台同时跑脚本，如番茄看看和微客众智
-
-任务打开二维码地址 https://ae01.alicdn.com/kf/U1f724e1a9fff4d5b8501e7637dea2e25H.jpg
-微信扫描打开
-
-可以先点阅读任务旁边的关注任务,关注三个公众号先提现三毛再说
-
-本脚本以学习为主！
-首次运行脚本，会提示获取数据
-去云扫码，首页自动获取数据,
-如果mitm没填写获取不到任务,可以到mitm界面添加一个为*的主机名
-获取成功数据之后请删除*
-
-TG电报群: https://t.me/hahaha8028
-
-3.1更新增加是否有阅读任务的判断
-加入自动兑换和自动提现，当前金币大于等于3000会自动提现，请自行去获取提现数据，方法，进入云扫码，成功提现一次获取数据成功
-解决多账号问题，可以多账号撸了
-3.2更新,新增判断，如果提示当前任务已结束脚本会尝试继续执行不会终止循环，key提交提示失败也会尝试重新执行，增加了提现成功的通知
-3.8更新，修复因官方更新无法提交key和领取任务奖励的问题
-3.9更新 修复云扫码官方更新无法自动阅读的问题
-
-3.18更新，新增判断云扫码每日首次运行脚本是否手动阅读过两篇文章，如果阅读过两篇文章脚本继续执行任务，否则结束
-
-3.26更新，云扫码多账号更新优化，加入多账号并发执行，获取ck方式改为和番茄看看一样的方式，不用手动选择抓包账号几，加入通知开关和首次阅读开关限制，自定义提现金额，比例为1:10000，最低提现金额为0.3元，即填写提现金额最少填写3000，注意需要重新更改重写的链接，请在下方获取替换以前的重写，该版本为@ztxtop大佬提交的pr。感谢大佬
-
-3.31更新,修复官方域名更换无法正常跑脚本的问题，请更换一下重写重新抓包
-
-4.16更新。平台更新,需要使用新的二维码进入云扫码重新获取ck数据。否则无法正常运行
-新的二维码地址:https://ae01.alicdn.com/kf/U1f724e1a9fff4d5b8501e7637dea2e25H.jpg
-
-PS:
-一般两篇文章过后还能阅读那么当天一般都能跑满任务的，需要手动阅读两篇的原因是和番茄看看一样，前两篇文章是调用微信接口鉴权的(这个没有办法解决)，鉴权通过可以继续阅读，不通过则限制阅读(如果你不手动阅读鉴权,直接跑脚本很大几率直接就限制了)，云扫码和番茄看看鉴权通过的话是不会有任务冲突的，一般情况下这两个平台手动阅读了两篇文章都能跑满全部任务。阅读三兄弟的微客众智则不需要手动阅读可以直接跑脚本(可惜ck过期太快，但是不会限制，我的ck最长坚持了四天，有些人就只能坚持一天，建议微客众智的重写保持开启状态。)
-
-boxjs地址 :  
-
-https://raw.githubusercontent.com/age174/-/main/feizao.box.json
-
-
-云扫码
-圈X配置如下，其他软件自行测试，定时可以多设置几次，没任务会停止运行的
-[task_local]
-#云扫码
-15 12,14,16,20,22 * * * https://raw.githubusercontent.com/age174/-/main/ysm.js, tag=云扫码, img-url=https://raw.githubusercontent.com/erdongchanyo/icon/main/taskicon/Yunsaoma.png, enabled=true
-
-
-[rewrite_local]
-#云扫码
-^http://.+?[^/]/yunonline/v\d+/redirect/(?!undefined) url script-request-header https://raw.githubusercontent.com/age174/-/main/ysm.js
-
-
-
-#loon
-^http://.+?[^/]/yunonline/v\d+/redirect/(?!undefined) script-path=https://raw.githubusercontent.com/age174/-/main/ysm.js, requires-body=true, timeout=10, tag=云扫码
-
-
-
-#surge
-
-云扫码 = type=http-request,pattern=^http://.+?[^/]/yunonline/v\d+/redirect/(?!undefined),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/age174/-/main/ysm.js,script-update-interval=0
-
-
-*/
-
 const $ = new Env('云扫码')
-let ysm = [
-  {
-    "openid": "oksnzwf-sY27XEheW941PVCw-qyI",
-    "domain": "http://erd.smkxcjh.shop/yunonline/v1/",
-    "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/7.0.21(0x17001525) NetType/WIFI Language/zh_CN",
-    "secret": "eyJpdiI6IlZUSVVBVkhzb0R6amlcLytweHVkNjJBPT0iLCJ2YWx1ZSI6Im1wdGpmZ2xFTTQwRGhTVVpnM2xUcFlvcEpvVGNPUzNtS01obWxOcTlnZnZBK2pjYjdBbGUwYm50TlRCWHhmc1dkUGF4Rm4rZ3hGYzBPYmcwOVpmTjdnSXJ4a3p4aUczclU1dElLNHRNMHBKZ01reXZwcVRSXC9EaWV3MDJ2NTBrS2JyM3dqb2E1c0ROZjltNzcrMEYzUG8zam1McnZxcmZqTHQ0Qm5paUlrWkJ0Um5TRlZ6Y3dRcGExSHZjXC94SjdtWlQ3aFlaenN4VHZvaFQrQUhYNUtiMExGNnhuZzJtbHhVK2dkbitVZXB5aW5LVjEwdnJjSU5TZmVNWSt1dEdDTjkxdUVVWTRRcUlydXhCb01zYjhsVlhGRWhFR04wUFh1UFJnZ3dOVVBNdzhvRGxiWEh3amx6bnkzbXJoK0VkeUxDczRJemIyaTBkOU1TQmRKNE14T0ZYSnJGdFRhXC9TREpHZnlCWGlnMHlER0g4akQ3cE05cExtQitVbmcyK1BCNm9ZYlwvUEZIYkRcL0hBSlJhZUdua3V1dz09IiwibWFjIjoiOGEzNmI4YWJkNzI3NzcwMjZiMzM3MzY3Yzg2ZWRkOGMyNzYwY2NmZjVmMjI3YmE2NDRmN2Y4YjFkMThhNzA3ZCJ9",
-    "txbody": "openid=oksnzwf-sY27XEheW941PVCw-qyI&request_id=5a2dfee49b6df1561cd7d08acb4d1eaf&ua=1"
-  },
-  {
-    "openid": "oksnzwRllOfixYuUkb2JnXE9qySM",
-    "domain": "http://erd.smkxcjh.shop/yunonline/v1/",
-    "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/7.0.21(0x17001525) NetType/WIFI Language/zh_CN",
-    "secret": "eyJpdiI6IjFnUFlIUjZMZUxvNVNyMmpIXC9LSzlBPT0iLCJ2YWx1ZSI6IkcrVVFwR0RVdWw2ZVwvZDhiS0xCazRQOVV4ZDNjY1wvQTZOTEorRnRLTGlvQzNScnROZVk5UnJHN2V5ZE9FRm9hUWM0VU9vU2tGdjZpOFRiVXJVNXVyZTBhbTRDVDEwQ3RlSGFvclFqMXI5YmNUMk1wMVpkcnV0bCs1MjBuQ0pOWGhteStvTnhkd1plN253T2F0RUw3QXkrUjZZK0lhblBXS2hxc2hNY2YyYUZTUkdka0xycmYyOFFMdjk4d1lTR0xWTzJGOWdkV2Q5OHh0K0UzZ2hYRzFoTnNXTmlLU3Juc1BhaXNMa0J4N3M3aDM4UTh3ZzRoTExCSWM1WVZpZUJ4YlQxTzRqRkpxSUhXbWRDSlJYNlN3dDRKbEU1ekdqOFluaVwvWTVzdFJoRWo4NVwvZ0V0em1BREJwMnB6eVRSWm1rRTE1Z2dqc2dBcVlWMWpXeFlNdkVNY05sYU9OZHJXK1FTd0dKcFp4a1lCTTN4c1RUbTFCVmpDMGJtSk9XSFpIanRaTkttVjREZGF5alFVOTl4YTF5bWRRPT0iLCJtYWMiOiI0MThhYjQ5OTM2YjAzMjQzMzY2NWExMzU4MDdiZDFmMDk0MTgxMTliNjQyMjljZDVkZGJkOWRjYzY0ZDIxMTJjIn0%3D",
-    "txbody": "openid=oksnzwRllOfixYuUkb2JnXE9qySM&request_id=b3c161e630a34a45d14025e7cd292179&ua=1"
-  },
-  {
-    "openid": "oksnzwbGbGGw_nlsnF0YUvvA4IWY",
-    "domain": "http://erd.smkxcjh.shop/yunonline/v1/",
-    "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/7.0.21(0x17001525) NetType/WIFI Language/zh_CN",
-    "secret": "eyJpdiI6IkhUR3pxVWJ5SnQ1dnYyVkVQWkRDdXc9PSIsInZhbHVlIjoiUFEzSkcxZWxDWkJvdytydExySXdOWkJDWnVUdldpNWxtc3hcLyt0d2lcL3FMcFNiZ3JMeUJpRUtVUlQzNW1zTmhkUng1dkpTYXk2TThnWitNYnZqVEMwNXVER1dNMlhOOFdaNk1hS2NQcUJud3Z6WnRiMW5jUjhHeXpBWVdPbG94eHNOdFRFMGEycTBKUWgrd1Y1YWo0SSsxTVg4aTJhMkVHajBnZk55N3kxTGdZMXB5UzhwbEpKYldVb2tlSSt1UFVBa2V5XC9yNzA0TFZ4bENwRnJhXC90Vm82RDNsSERZUkd0WjIrWjJGN0dobEl2eFZBcm03blNGMmtKblhWcjIrdDZIeXM5N1N2TFdKVUxRV0hFbFpzNnc3aG9iSGt2YjMwWW8wNlZZdzI5eGpqTGdGRWpESkhCOFJsXC9qVTlGa3puMUtoWTRKZlNhc2xQVWwrZEpPR2xXT1pqc0RjWnNQQndVdlNmQjM2eStkNStacnJDc0p0VUlRbW9WSkxXNDIrUjROZ2ZCelpxXC9lak9iaHJlZ0tmY0d6QT09IiwibWFjIjoiMTgyMmNlYzRiYTNkYTY1MmY1YzUzMzgwZDlhZDgzNzQzMjBjOWNlMTQyMTEwYjdiOTA5YTllM2FjMjQ4MWRjZCJ9",
-    "txbody": "openid=oksnzwbGbGGw_nlsnF0YUvvA4IWY&request_id=cb38d6febd93988734ef4d2548f6474b&ua=1"
-  },
-  {
-    "openid": "oksnzwYC-SDweCfVrBOO6da4srXA",
-    "domain": "http://erd.smkxcjh.shop/yunonline/v1/",
-    "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/7.0.21(0x17001525) NetType/WIFI Language/zh_CN",
-    "secret": "eyJpdiI6InZhWGFmK3ZpamFBUzhsdnJBTXZYMUE9PSIsInZhbHVlIjoiRXZhZlFUUFlxazBlK05iSXFsT09SMnhHdSs1VEM4cnV4VFVsd0tiSTRpcDV3S3hSN0c2c2ZtTGtHZ3dUS2hXSzIzdFRDM0tpV0VYMWQzTThDRUVuKzFTcHFNbkVxYU10RktWdmdtbE1nUjU0cHBPenNBdmE0eDlhUXlRU2JQdnMrT0tjeHgxZGluZGJ0TTRVSWFrdVFINUFSRHJEREQwbERpays0eTVMTXpCaU82TU93TEpuYzZhNFNncjlIcWd0SVdVZWM5NjlvQzhQSmowV3VTcGxma243cDFiUnpkRU4zNmRlc0hIYk1qRVNcL3JUYkUyakdpQmtPOTJZa0VvTjU3M3pqVklVT2FNQVNPMXd3TEh0UVZaYXlDaWNWXC9WdzJEOVpOaEFoRWxhWEhCaXZFUFZPclwvRFRLTnM2anBMY280XC9rbFVtVlJ6VXNYK3pKdWV6QzQ0akM4QjRQTWVEMHkzaTQ1cHcwZ2cwV09IaEdNMlN5MlZjSFRyYmJmTEJNaWVqZ21BcHRiN29Oc1MyXC9vYUMzWEh3PT0iLCJtYWMiOiI0MTM0YWRlZTE5NTYwYWI5MTk5YWI5MmY1MTFjZGY1YjE0ZGNlZmMxZWJlMmQ3MWFiYjMyMGM2NTIzYjQ1OTJjIn0%3D",
-    "txbody": "openid=oksnzwYC-SDweCfVrBOO6da4srXA&request_id=5dc78e0b32791b50ab28fc22b65328f3&ua=1"
-  },
-  {
-    "openid": "oksnzweCRuI17eBn8E2O6G9L2dtE",
-    "domain": "http://erd.smkxcjh.shop/yunonline/v1/",
-    "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/7.0.21(0x17001525) NetType/WIFI Language/zh_CN",
-    "secret": "eyJpdiI6ImVmbGJsXC9HU09qN0lSckFaWjJ6eEhRPT0iLCJ2YWx1ZSI6IlgwMXZzQ2hBOG1YVjJJRWFNN0gzM1lqYzVvVmJ1eVVkTkdrdFdEeWgxeFFJMm5iMkVYaERcL0N1bDA3Qlg2OW9ZTEF6ZUt0TlJscnd4OGVVVEVDcmRTNlJCZXJ5ZW0xQ3dOQmMycHJqZjZBQ2ZBVXBPZkpCTGtLdXVJZ01JaENYQldsTUVmTzhrTlpvWnNwUTJBMDl0Y3dvdVd4VXdPZnZ0XC8xRzBidU5LYmN4SktpZ1ByUlo5OU5Taml0QVlZWEN0QWE0QVEwclUxTEVLcW5lQ1owSmoxbzdJdFRxaDVHYTVcL2hNWDVkTDNpS3Fsd3VWRzNZNXlDXC9MZTFMN2dmY1ZIZnVHR25XSzVGVVdYT0RVRW9TSkJuek5GVHdGcGFNdk1EbTJINHhuRzJCdWNpcXhvaGliS1NFQ2NheXhsUFZYc3RcL2syOU9PUWRxMGFHN1JnanVnV0I1UlJzcXVzeDFuZzVxZWoyUGJIZ3FhbjdnSXJSWmRsRitFSmh5K3FoXC9WMDhkTzJ5TzJxUnpZRkZ4REdpeGx4WUE9PSIsIm1hYyI6IjBjN2YyYzc3YmMwN2Y5ZjlhYWVmZTUxMWRmMmVjMGZlMjU5YTczNmRiYjI1ODk0MTVhYTEzMzUzNGJhODY4ZjMifQ%3D%3D",
-    "txbody": "openid=oksnzweCRuI17eBn8E2O6G9L2dtE&request_id=f0f419a3469edcbf2958198187dcd04e&ua=1"
-  },
-  {
-    "openid": "oksnzwc_Dh6DIC1b7M0N6z6q-upU",
-    "domain": "http://erd.smkxcjh.shop/yunonline/v1/",
-    "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/7.0.21(0x17001525) NetType/WIFI Language/zh_CN",
-    "secret": "eyJpdiI6IkRjdnNUa1wvb0xjV01zdGJKWEh3SnVRPT0iLCJ2YWx1ZSI6IjFNMTJ2TEk2eDYxekxucjlGRkZXSUcrVDUwWGZJSXdnYm5yT21rK0M2VUNhQzVJOHliUTdoTUV5VHVDU2VkMWpxTVwvWEZKa05PdkZVb0hwNzlKdVQ5Q0tyK0pjSkJkWVFZc2MyNm53TVhGUUtzQlJDVHk5S2laOXhTVWRLV0NcL3h1WDdQZHdnb0oyR1lic0xVSlFPVEN5MGprTDN1MHJWRDNCMGNWRmNoTURVMXdxaGQrcGhaY3d4RXJ6dTFMMlAwR2Z1a3JBdFVmXC95UXRFR3hnUVFpZ0xcLzJDalBkS1JhblducktnYnNLYno2SjVFUE9wS0JHSSsrTVl1a3VaTWltYXdDZDJyQkJBcFJlMjVjd2d2NXg5RDZFelwvK2RBSzB4REtMUHFZSWxTMCtFS0Nnb1lnXC9sSHJVYUo5b1BuaE9RY1g1WDlDdllMNGNCNWlkYmpOZkUrd1BiXC9PeWRxUmxLUno4U0JZUzBnTEdNaG51MUIyZkNFVk5EQlhrWE5qS05hK1NadzNtZUFNUWdtNjc4OGxFOXFBPT0iLCJtYWMiOiJmNWE3NDA0M2U0MWQzZDc4MTJhZTg0ZTY0N2FjNWQ4NTUzM2M0NTQyMTE1NzJkMzFlYTQ1ZjA5ZWI0ODYwMDJhIn0%3D",
-    "txbody": "openid=oksnzwc_Dh6DIC1b7M0N6z6q-upU&request_id=6b930a0c37719e4e2d1714d4a11c2d43&ua=1"
-  }
-]
+let ysm = require('./ysm.json');
 let needNotice = $.getval('ysmNotice') == 'true'
 let ysmBanfirstTask = $.getval('ysmBanfirstTask') || 'true'  // 禁止脚本执行首个任务，避免每日脚本跑首次任务导致微信限制
 let ysmBanhalfTask = $.getval('ysmBanhalfTask') || 'true' // 脚本执行完第50个任务时退出任务，再手动阅读2篇避免出现微信限制
@@ -453,8 +340,8 @@ function ysm1(ac, count) {
           const result = JSON.parse(data)
           if (result.errcode == 0 && result.data && result.data.link) {
             $.log(`\n🌝账号${ac.no}获取key回执成功，第${count}次跳转观看💦`)
-            let jumpLink = (result.data.link.match(/redirect_uri=(.*?)(&|#wechat_redirect|$)/) || ['', result.data.link])[1]
-            let jumpObj = await ysm2(ac, unescape(jumpLink) + '?/', 1)
+            let jumpLink = (result.data.link.match(/redirect_uri=(.*?)#wechat_redirect/) || ['', result.data.link])[1]
+            let jumpObj = await ysm2(ac, unescape(jumpLink) , 1)
             if (jumpObj) {
               let time = parseInt(Math.random() * (11 - 9 + 1) + 9, 10)
               $.log(`🌝账号${ac.no}等待${time}秒后提交本次观看任务`)
