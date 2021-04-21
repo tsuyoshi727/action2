@@ -18,7 +18,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
         with:
-          repository:Maomaoyu0319/Fuck-Fork
+          repository: Maomaoyu0319/Fuck-Fork
       - name: Use Node.js 14.x
         uses: actions/setup-node@v1
         with:
