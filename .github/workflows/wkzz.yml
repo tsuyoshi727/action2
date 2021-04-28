@@ -6,7 +6,7 @@ on:
       watch:
         types: [started]
       repository_dispatch:
-        types: 10m
+        types: wkzz
 
 jobs:
   build:
