@@ -1,4 +1,4 @@
-const $ = new Env('考状元娶老婆二合一');
+const $ = new Env('mmdzz');
 let status;
 status = (status = ($.getval("qlpstatus") || "1") ) > 1 ? `${status}` : ""; // 账号扩展字符
 const qlphdArr = [],kzyhdArr = [],qlpcount = ''
@@ -56,7 +56,7 @@ if(!$.isNode()&&qlphd.indexOf("\n") ==-1){
           qlphd = qlphdArr[i];
           kzyhd = kzyhdArr[i];
           $.index = i + 1;
-          console.log(`\n开始【考状元娶老婆${$.index}】`)
+          console.log(`\n开始【mmdzz${$.index}】`)
           await qlpyb();
           await qlphb();
           await kzyyb();
@@ -73,7 +73,7 @@ if(tx == 1){
 })()
   .catch((e) => $.logErr(e))
   .finally(() => $.done())
-//考状元娶老婆数据获取
+//11数据获取
 
 
 function qlpck() {
@@ -82,18 +82,18 @@ function qlpck() {
 if(qlphd.indexOf("oneline") > -1){
 if(qlphd)    $.setdata(qlphd,`qlphd${status}`)
 $.log(qlphd)
-   $.msg($.name,"",'娶老婆'+`${status}` +'数据获取成功！')
+   $.msg($.name,"",'1'+`${status}` +'数据获取成功！')
 } else {
 const kzyhd = JSON.stringify($request.headers)
 if(kzyhd)    $.setdata(kzyhd,`kzyhd${status}`)
 $.log(kzyhd)
-   $.msg($.name,"",'考状元'+`${status}` +'数据获取成功！')
+   $.msg($.name,"",'1'+`${status}` +'数据获取成功！')
 
 }
 }
 }
 
-//娶老婆银币
+//1银币
 function qlpyb(timeout = 0) {
   return new Promise((resolve) => {
 let url = {
@@ -106,10 +106,10 @@ let url = {
     const result = JSON.parse(data)
 
         if(result.code == 0){
-        console.log(`\n娶老婆银币获取成功:${result.data.optCoin} 余额:${result.data.userCoin.coin}`)
+        console.log(`\n1银币获取成功:${result.data.optCoin} 余额:${result.data.userCoin.coin}`)
         
 } else {
-       console.log('\n娶老婆银币获取失败'+data)
+       console.log('\n1银币获取失败'+data)
 }
    
         } catch (e) {
@@ -122,7 +122,7 @@ let url = {
 }
 
 
-//娶老婆红包
+//1红包
 function qlphb(timeout = 0) {
   return new Promise((resolve) => {
 let url = {
@@ -135,10 +135,10 @@ let url = {
     const result = JSON.parse(data)
 
         if(result.code == 0){
-        console.log(`\n娶老婆红包获取成功:${result.data.optCoin} 余额:${result.data.userCoin.coin}`)
+        console.log(`\n1红包获取成功:${result.data.optCoin} 余额:${result.data.userCoin.coin}`)
 
 } else {
-       console.log('\n娶老婆红包获取失败'+data)
+       console.log('\n1红包获取失败'+data)
         
 }
    
@@ -152,7 +152,7 @@ let url = {
 }
 
 
-//考状元银币
+//1银币
 function kzyyb(timeout = 0) {
   return new Promise((resolve) => {
 let url = {
@@ -165,10 +165,10 @@ let url = {
     const result = JSON.parse(data)
 
         if(result.code == 0){
-        console.log(`\n考状元银币获取成功:${result.data.optCoin} 余额:${result.data.userCoin.coin}`)
+        console.log(`\n1银币获取成功:${result.data.optCoin} 余额:${result.data.userCoin.coin}`)
        
 } else {
-       console.log('\n考状元银币获取失败'+data)
+       console.log('\n1银币获取失败'+data)
 }
    
         } catch (e) {
@@ -181,7 +181,7 @@ let url = {
 }
 
 
-//考状元红包
+//1红包
 function kzyhb(timeout = 0) {
   return new Promise((resolve) => {
 let url = {
@@ -194,10 +194,10 @@ let url = {
     const result = JSON.parse(data)
 
         if(result.code == 0){
-        console.log(`\n考状元红包获取成功:${result.data.optCoin} 余额:${result.data.userCoin.coin}`)
+        console.log(`\n1红包获取成功:${result.data.optCoin} 余额:${result.data.userCoin.coin}`)
        
 } else {
-       console.log('\n考状元红包获取失败'+data)
+       console.log('\n1红包获取失败'+data)
 }
    
         } catch (e) {
@@ -209,7 +209,7 @@ let url = {
   })
 }
 
-//娶老婆提现
+//1提现
 function qlptx(timeout = 0) {
   return new Promise((resolve) => {
 let url = {
@@ -222,10 +222,10 @@ let url = {
     const result = JSON.parse(data)
 
         if(result.code == 0){
-        console.log(`\n娶老婆提现成功:${result.msg}`)
+        console.log(`\n1提现成功:${result.msg}`)
        
 } else {
-       console.log('\n娶老婆提现失败:'+data)
+       console.log('\n1提现失败:'+data)
 }
    
         } catch (e) {
@@ -238,7 +238,7 @@ let url = {
 }
 
 
-//考状元提现
+//1提现
 function kzytx(timeout = 0) {
   return new Promise((resolve) => {
 let url = {
@@ -251,10 +251,10 @@ let url = {
     const result = JSON.parse(data)
 
         if(result.code == 0){
-        console.log(`\n考状元提现成功:${result.msg}`)
+        console.log(`\n1提现成功:${result.msg}`)
        
 } else {
-       console.log('\n考状元提现失败:'+data)
+       console.log('\n1提现失败:'+data)
 }
    
         } catch (e) {
