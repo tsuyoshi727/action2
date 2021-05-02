@@ -67,9 +67,9 @@ if(tx == 1){
  await qlptx()
  await kzytx()
 }
+}
 console.log(`==============休息1分钟==============\n`);
         await $.wait(60000)
-}
 }
          
           
