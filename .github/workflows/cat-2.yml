@@ -1,4 +1,4 @@
-name: cat
+name: cat-while
 on:
   workflow_dispatch:
   schedule:
