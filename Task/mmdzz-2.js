@@ -63,10 +63,7 @@ if(!$.isNode()&&qlphd.indexOf("\n") ==-1){
           await qlphb();
           await kzyyb();
           await kzyhb();
-if(tx == 1){
- await qlptx()
- await kzytx()
-}
+
 }
 }
 console.log(`==============休息40s==============\n`);
