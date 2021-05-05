@@ -66,8 +66,8 @@ if(!$.isNode()&&qlphd.indexOf("\n") ==-1){
 
 }
 }
-console.log(`==============休息10s==============\n`);
-        await $.wait(60000)         
+console.log(`==============休息7s==============\n`);
+        await $.wait(42000)         
           
   }
 }}
