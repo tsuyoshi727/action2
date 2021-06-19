@@ -13,9 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          repository: Wenmoux/scripts              
+        uses: actions/checkout@v2              
 
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
@@ -26,7 +24,7 @@ jobs:
           npm install
       - name: '运行 【1】'
         run: |
-          node other/jrkuaixun.js
+          node Task/read10s.js
         env:
           Readck: ${{ secrets.Readck }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
